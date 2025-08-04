@@ -3,8 +3,9 @@ import requests
 
 app = Flask(__name__)
 
-TOKEN = "توکن_ربات_تو"2119067640:Q8UDAuVI4VNkZ39aCG3dorkMuQaTWzW4HSe2Zklc
-ADMIN_ID = "mostafa_rivandi"  # 👈 آیدی عددی خودت (ادمین)
+TOKEN ="2119067640:Q8UDAuVI4VNkZ39aCG3dorkMuQaTWzW4HSe2Zklc"
+
+ADMIN_ID = "mostafa_rivandi"
 
 API_URL = f"https://tapi.bale.ai/bot{TOKEN}"
 
