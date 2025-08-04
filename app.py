@@ -68,3 +68,7 @@ def webhook():
     # در غیر این صورت
     send_message(chat_id, "لطفاً فقط عکس یا ویدیو ارسال نمایید.")
     return "ok"
+@app.route('/', methods=['GET'])
+def home():
+    return "Bot is running!"
+
