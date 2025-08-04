@@ -72,3 +72,20 @@ def webhook():
 def home():
     return "Bot is running!"
 
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/', methods=['GET'])
+def index():
+    return "Bot is running"
+
+@app.route('/', methods=['POST'])
+def webhook():
+    data = request.json
+    # اینجا می‌تونی پیام دریافتی رو پردازش کنی
+    print("Received data:", data)
+    return "OK"  # یا هر پاسخ دیگه‌ای که می‌خوای بدی
+
+
+
