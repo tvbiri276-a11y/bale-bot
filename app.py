@@ -4,7 +4,7 @@ import json
 
 app = Flask(__name__)
 
-TOKEN = "Q8UDAuVI4VNkZ39aCG3dorkMuQaTWzW4HSe2Zklc"
+TOKEN = "Z9ZCkFPCReeCrMbTq4lsq7WDvBocamNyKd8DYGHQ"
 ADMIN_ID = "2119067640"
 API_URL = f"https://tapi.bale.ai/bot{TOKEN}"
 
@@ -68,4 +68,5 @@ def webhook():
 @app.route('/', methods=['GET'])
 def home():
     return "Bot is running!"
+
 
