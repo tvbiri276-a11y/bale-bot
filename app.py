@@ -1,5 +1,6 @@
 from flask import Flask, request
 import requests
+import json
 
 app = Flask(__name__)
 
@@ -13,7 +14,7 @@ def send_message(chat_id, text, reply_markup=None):
         "text": text,
     }
     if reply_markup:
-        data["reply_markup"] = reply_markup
+        data["reply_markup"] = json.dumps(reply_markup)  # تبدیل کیبورد به رشته JSON
     requests.post(f"{API_URL}/sendMessage", json=data)
 
 def send_file_to_admin(file_id, file_type, user_name):
@@ -26,15 +27,10 @@ def send_file_to_admin(file_id, file_type, user_name):
     }
     requests.post(url, json=data)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route("/", methods=["POST"])
 def webhook():
-    if request.method == 'GET':
-        return "Bot is running!"
-
-    data = request.get_json()
-    print("Received data:", data)  # برای دیباگ تو لاگ‌ها
-
-    message = data.get("message")
+    update = request.get_json()
+    message = update.get("message")
     if not message:
         return "no message"
 
@@ -69,5 +65,6 @@ def webhook():
     send_message(chat_id, "لطفاً فقط عکس یا ویدیو ارسال نمایید.")
     return "ok"
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route('/', methods=['GET'])
+def home():
+    return "Bot is running!"
